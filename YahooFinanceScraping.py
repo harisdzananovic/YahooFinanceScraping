@@ -17,10 +17,15 @@ def getData(symbol):
     }
     return stock 
 
+def output(stock):
+    gc = gspread.service_account(filename="credentials.json")
+    sh = gc.open('ScrapeToSheets').sheet1
+    sh.append_row([str(stock['name'], str(stock['date'], float(stock['price'], float(stock['market cap'])])
+    return
+
 for item in mystocks:
     stockdata.append(getData(item))
     print('Getting: ', item)
 
 with open('stockdata.json', 'w') as f:
     json.dump(stockdata, f)
-
